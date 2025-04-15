@@ -3,7 +3,7 @@
 // ^RACCOLTA DATI
 
 const info = document.getElementById("text-info");
-const card = document.getElementById("card");
+const cardsElement = document.getElementById("cards");
 
 // console.log(info);
 // console.log(cardMembers);
@@ -49,99 +49,19 @@ const teamMembers = [
 
 // ^SVOLGIMENTO
 
-const cardMembers = () => {
-  card.innerHTML = `
-      <div class="card mb-3" style="max-width: 540px;">
+const getCardAsHtmlString = (member) => {
+  return `
+      <div class="card mb-3 " style="max-width: 400px;">
         <div class="row g-0">
           <div class="col-md-4">
-            <img src="./${img}" class="img-fluid rounded-start" alt="...">
+            <img src="./${member.img}" class="img-fluid rounded-start" alt="...">
           </div>
 
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">${name}</h5>
-              <p class="card-text">${role}</p>
-              <p class="card-text"><small class="text-body-secondary">${email}</small></p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card mb-3" style="max-width: 540px;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="./${img}" class="img-fluid rounded-start" alt="...">
-          </div>
-
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">${name}</h5>
-              <p class="card-text">${role}</p>
-              <p class="card-text"><small class="text-body-secondary">${email}</small></p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card mb-3" style="max-width: 540px;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="./${img}" class="img-fluid rounded-start" alt="...">
-          </div>
-
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">${name}</h5>
-              <p class="card-text">${role}</p>
-              <p class="card-text"><small class="text-body-secondary">${email}</small></p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card mb-3" style="max-width: 540px;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="./${img}" class="img-fluid rounded-start" alt="...">
-          </div>
-
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">${name}</h5>
-              <p class="card-text">${role}</p>
-              <p class="card-text"><small class="text-body-secondary">${email}</small></p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card mb-3" style="max-width: 540px;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="./${img}" class="img-fluid rounded-start" alt="...">
-          </div>
-
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">${name}</h5>
-              <p class="card-text">${role}</p>
-              <p class="card-text"><small class="text-body-secondary">${email}</small></p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card mb-3" style="max-width: 540px;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="./${img}" class="img-fluid rounded-start" alt="...">
-          </div>
-
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">${name}</h5>
-              <p class="card-text">${role}</p>
-              <p class="card-text"><small class="text-body-secondary">${email}</small></p>
+              <h5 class="card-title">${member.name}</h5>
+              <p class="card-text">${member.role}</p>
+              <p class="card-text"><small class="text-body-secondary">${member.email}</small></p>
             </div>
           </div>
         </div>
@@ -149,19 +69,15 @@ const cardMembers = () => {
   `;
 };
 
-let name = "";
-let role = "";
-let email = "";
-let img = "";
+// console.log(getCardAsHtmlString(teamMembers[0]));
 
 for (let i = 0; i < teamMembers.length; i++) {
   const currentCard = teamMembers[i];
-  name = currentCard.name;
-  role = currentCard.role;
-  email = currentCard.email;
-  img = currentCard.img;
 
-  cardMembers(card);
+  console.log(getCardAsHtmlString(currentCard));
+
+  cardsElement.innerHTML += getCardAsHtmlString(currentCard);
+  // cardMembers(card);
 
   // cardMembers(card);
 }
